@@ -1,19 +1,27 @@
-﻿using System.ComponentModel;
-
+﻿
 namespace _2022.Day
 {
     public class Day_01 : BaseDay
     {
-        private readonly string _input;
-        public Day_01()
+
+		private IEnumerable<IEnumerable<int>> _input;
+
+		public Day_01()
+		{
+			_input = File.ReadAllText(InputFilePath).Split("\r\n\r\n").Select(x => x.Split("\r\n").Select(int.Parse));
+		}
+
+        public override ValueTask<string> Solve_1()
         {
-            _input = File.ReadAllText(InputFilePath);
-        }
+			var itemStash = _input.Select(elf => elf.Aggregate(0, (acc, value) => acc + value));
+			return new(itemStash.Max().ToString());
+		}
 
-        public override ValueTask<string> Solve_1() => new($"Solution 1 {ClassPrefix} {CalculateIndex()}");
+		public override ValueTask<string> Solve_2()
+        {
+			var itemStash = _input.Select(elf => elf.Aggregate(0, (acc, value) => acc + value)).OrderDescending().Take(3).Sum();
+			return new(itemStash.ToString());
+		}
 
-
-        public override ValueTask<string> Solve_2() => new("Solution 2");
-
-    }
+	}
 }
