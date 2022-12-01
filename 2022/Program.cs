@@ -8,8 +8,8 @@ Console.WriteLine("1 FOR SOLVE ALL DAYS");
 Console.WriteLine("2 FOR SOLVE LAST DAY");
 Console.WriteLine("");
 
-string? menu = Console.ReadLine();
-
+//string? menu = Console.ReadLine();
+string menu = "2";
 switch (menu)
 {
     case "1":
@@ -22,7 +22,7 @@ switch (menu)
     case "2":
         await Solver.SolveLast(opt =>
         {
-            opt.ElapsedTimeFormatSpecifier = "F3";
+			opt.ElapsedTimeFormatSpecifier = "F3";
         });
         break;
 
