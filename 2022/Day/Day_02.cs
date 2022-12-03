@@ -1,4 +1,4 @@
-namespace _2022.Day.Day_02
+namespace _2022.Day
 {
     public class Day_02 : BaseDay
     {
